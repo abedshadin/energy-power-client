@@ -1,0 +1,20 @@
+[
+    {
+        "name":"Abed Hossain Shadin",
+        "img":"https://i.ibb.co/c3fy3ZS/DSC-5853.jpg",
+        "review":"This sites give me proper service. I'm 100% satisfied with this site.",
+        "ratings":"★★★★★"
+    },
+    {
+        "name":"Mahmudul Hasan Shihab",
+        "img":"https://i.ibb.co/dBQb4c0/img-mobile.jpg",
+        "review":"Good Service Provider. But little bit problem with customer care.",
+        "ratings":"★★★★☆"
+    },
+    {
+        "name":"Reduan Hossain Rahim",
+        "img":"https://i.ibb.co/mBDhfGf/277741472-1315451522285180-5140139034569448865-n.jpg",
+        "review":"I loved this. Great Website.",
+        "ratings":"★★★★☆"
+    }
+]

@@ -9,7 +9,7 @@ const Navbar = () => {
   <div class="flex-none gap-2">
  
  
-    <ul class="menu menu-horizontal p-0">
+    {/* <ul class="menu menu-horizontal p-0">
       <li><a>Item 1</a></li>
       <li tabindex="0">
         <a>
@@ -22,7 +22,7 @@ const Navbar = () => {
         </ul>
       </li>
       <li><a>Item 3</a></li>
-    </ul>
+    </ul> */}
   
 
     <div class="dropdown dropdown-end">

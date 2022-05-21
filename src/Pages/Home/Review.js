@@ -1,13 +1,21 @@
 import React from 'react';
 
-const Review = () => {
+const Review = ({review}) => {
     return (
-        <div class="card w-96 bg-base-100 shadow-xl">
+        <div class="card w-96 bg-base-300 shadow-xl">
   <div class="card-body">
-    <h2 class="card-title">Card title!</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
+      <div className='flex justify-between'>
+      <h2 class="card-title text-2xl">{review.name}</h2>
+      <div class="avatar">
+  <div class="w-16 rounded-full ring ring-accent  ">
+    <img src={review.img} />
+  </div>
+</div>
+      </div>
+   
+    <p>{review.review}</p>
     <div class="card-actions justify-end">
-      <button class="btn btn-primary">Buy Now</button>
+      <p class="btn btn-primary disabled">{review.ratings}</p>
     </div>
   </div>
 </div>
