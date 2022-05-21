@@ -1,4 +1,8 @@
 import React from 'react';
+import experience from '../../assets/icons/user-experience.png'
+import quality from '../../assets/icons/quality-control.png'
+import satisfaction from '../../assets/icons/satisfaction.png'
+import award from '../../assets/icons/trophy.png'
 const Summary = () => {
     return (
         <div>
@@ -8,6 +12,7 @@ const Summary = () => {
             
 		<div className="border rounded-lg m-5 p-5">
 		<h4 className="text-center">
+			<img src={experience} alt="" className='w-20 mx-auto'/>
 		<span className="font-bold   text-success lg:text-8xl text-6xl" data-from="0" data-to="25" data-speed="1500">5</span>
 	</h4>
 	<p className="special-heading text-center">
@@ -24,6 +29,7 @@ const Summary = () => {
 
     <div className="border rounded-lg m-5 p-5">
 		<h4 className="text-center">
+		<img src={quality} alt="" className='w-20 mx-auto'/>
 		<span className="font-bold   text-success lg:text-8xl text-6xl" data-from="0" data-to="25" data-speed="1500">27</span>
 	</h4>
 	<p className="special-heading text-center">
@@ -39,7 +45,8 @@ const Summary = () => {
 	</div>
     <div className="border rounded-lg m-5 p-5">
 		<h4 className="text-center">
-		<span className="font-bold   text-success lg:text-8xl text-6xl" data-from="0" data-to="25" data-speed="1500">12K+</span>
+		<img src={satisfaction} alt="" className='w-20 mx-auto'/>
+		<span className="font-bold   text-success lg:text-8xl text-6xl" data-from="0" data-to="25" data-speed="1500">6K+</span>
 	</h4>
 	<p className="special-heading text-center">
 		<span className="uppercase text-white font-bold lg:text-2xl text-1xl">
@@ -54,6 +61,7 @@ const Summary = () => {
 	</div>
     <div className="border rounded-lg m-5 p-5">
 		<h4 className="text-center"> 
+		<img src={award} alt="" className='w-20 mx-auto'/>
 		<span className="font-bold   text-success lg:text-8xl text-6xl" data-from="0" data-to="25" data-speed="1500">12</span>
 	</h4>
 	<p className="special-heading text-center">
