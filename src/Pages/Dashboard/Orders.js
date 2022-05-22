@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import DeleteConfirm from './DeleteConfirm';
 
 const Orders = () => {
     const [user,loading] = useAuthState(auth);
@@ -40,6 +41,7 @@ const Orders = () => {
       <th>Tool Name</th>
       <th>Quantity</th>
       <th>Status</th>
+      <th>Payment</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -53,15 +55,16 @@ const Orders = () => {
                 <td>{order.tool_name}</td>
                 <td>{order.quantity}</td>
                 <td className='uppercase'>{order.status==='unpaid'?<p className=' text-red-500'>{order.status}</p>:<p className='text-green-500'>{order.status}</p>}</td>
-
+<td>  {order.status==='unpaid'?<td className='uppercase text-danger'><button className='btn btn-danger'>Pay Now</button></td> :<td className='uppercase text-danger'><button className='btn ' disabled>Paid</button></td>
+                }</td>
                 {order.status==='unpaid'?<td className='uppercase text-danger'><button className='btn btn-danger' onClick={() => handleDelete(order._id)}>X</button></td> :<td className='uppercase text-danger'><button className='btn btn-danger' disabled>X</button></td>
                 }
-               
+           
               </tr>)
           }
             
         
-           
+        
            
           </tbody>
         </table>
