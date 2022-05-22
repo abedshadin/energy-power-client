@@ -52,8 +52,11 @@ const Orders = () => {
                 <th>{index+1}</th>
                 <td>{order.tool_name}</td>
                 <td>{order.quantity}</td>
-                <td className='uppercase'>{order.status}</td>
-                <td className='uppercase text-danger'><button className='btn btn-danger' onClick={() => handleDelete(order._id)}>X</button></td>
+                <td className='uppercase'>{order.status==='unpaid'?<p className=' text-red-500'>{order.status}</p>:<p className='text-green-500'>{order.status}</p>}</td>
+
+                {order.status==='unpaid'?<td className='uppercase text-danger'><button className='btn btn-danger' onClick={() => handleDelete(order._id)}>X</button></td> :<td className='uppercase text-danger'><button className='btn btn-danger' disabled>X</button></td>
+                }
+               
               </tr>)
           }
             
