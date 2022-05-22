@@ -5,7 +5,8 @@ import award from '../../assets/icons/trophy.png'
 const Summary = () => {
     return (
         <div>
-             <div className='flex flex-col justify-center items-center mb-4'>
+           <div class="divider"></div> 
+             <div className='flex flex-col justify-center items-center mb-12'>
             <h2 className='text-center text-3xl font-bold uppercase text-accent mb-4'>Our Activities</h2>
         <div className="grid lg:grid-cols-3 grid-cols-1 gap-12">
 
@@ -51,6 +52,7 @@ const Summary = () => {
         </div>
 
     </div>
+    <div class="divider"></div> 
         </div>
     );
 };
