@@ -1,36 +1,46 @@
-import React from "react";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import React, { useState } from "react";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 
 const Login = () => {
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   let signInError;
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
-  if (user) {
+  if (guser || user) {
     navigate(from, { replace: true });
   }
-  if (loading) {
+  if (gloading || loading) {
     return <Loading></Loading>;
   }
-  if (error) {
+  if (gerror || error) {
     signInError = (
       <p className="text-red-500">
-        <small>{error?.message}</small>
+        <small>{gerror?.message}</small>
       </p>
     );
   }
-
+  const handleLogin = (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(email, password);
+  };
   return (
     <div className="hero  bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="card flex-shrink-0 w-80 max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">
-            <form>
+            <form onSubmit={handleLogin}>
               <h1 className="text-center text-2xl text-white">Login</h1>
               <div className="form-control">
                 <label className="label">
@@ -41,6 +51,7 @@ const Login = () => {
                   placeholder="email"
                   name="email"
                   className="input input-bordered"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="form-control">
@@ -52,6 +63,7 @@ const Login = () => {
                   name="password"
                   placeholder="password"
                   className="input input-bordered"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <label className="label">
                   <a>Forgot password?</a>

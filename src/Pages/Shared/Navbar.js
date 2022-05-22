@@ -39,11 +39,14 @@ const Navbar = () => {
       <li><a>Item 3</a></li>
     </ul> */}
 
-        {user ? (
+        {user ? 
           <div className="dropdown dropdown-end">
             <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <img src={user?.photoURL} alt="User"></img>
+                {
+                  user.photoURL ? <img src={user?.photoURL} alt="User"></img>:<img src="https://d29fhpw069ctt2.cloudfront.net/icon/image/84587/preview.svg" alt="User"></img>
+                }
+               
               </div>
             </label>
             <ul
@@ -64,7 +67,7 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-        ) : (
+         : 
           <div className="dropdown dropdown-end">
             <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
@@ -84,12 +87,10 @@ const Navbar = () => {
               <li>
                 <a>Settings</a>
               </li>
-              <li>
-                <a>Logout</a>
-              </li>
+              
             </ul>
           </div>
-        )}
+        }
       </div>
     </div>
   );

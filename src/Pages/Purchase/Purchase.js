@@ -27,9 +27,14 @@ const Purchase = () => {
     if (quantity < min) {
       toast.error("Your Quantity is less than Min. Order Amount");
       setActive(!active);
+      
     } else if (quantity > avail) {
       toast.error("Your Quantity is greater than Available Quantity");
       setActive(!active);
+      
+    }
+    else{
+   
     }
   };
 
