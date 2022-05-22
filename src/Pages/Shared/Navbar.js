@@ -1,10 +1,20 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import { signOut } from 'firebase/auth';
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const [user,loading] = useAuthState(auth);
+
+  const logout= ()=>{
+    signOut(auth);
+  }
+console.log(user);
   return (
     <div class="navbar bg-base-100">
       <div class="flex-1">
-        <a class="btn btn-ghost normal-case text-xl">Energy Power</a>
+        <Link class="btn btn-ghost normal-case text-xl" to='/'>Energy Power</Link>
       </div>
       <div class="flex-none gap-2">
         {/* <ul class="menu menu-horizontal p-0">
@@ -22,6 +32,34 @@ const Navbar = () => {
       <li><a>Item 3</a></li>
     </ul> */}
 
+
+
+{
+  user ? 
+  <div class="dropdown dropdown-end">
+    <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+      <div class="w-10 rounded-full">
+        <img src={user.photoURL} alt='User'/>
+      </div>
+    </label>
+    <ul
+      tabindex="0"
+      class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+    >
+      <li>
+        <a class="justify-between">
+          Profile
+          <span class="badge">New</span>
+        </a>
+      </li>
+      <li>
+        <a>Settings</a>
+      </li>
+      <li>
+        <button onClick={logout}>Logout</button>
+      </li>
+    </ul>
+  </div>:
         <div class="dropdown dropdown-end">
           <label tabindex="0" class="btn btn-ghost btn-circle avatar">
             <div class="w-10 rounded-full">
@@ -46,6 +84,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
+}
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import Purchase from './Pages/Purchase/Purchase';
 import Error from './Pages/Shared/Error';
 import RequireAuth from './Pages/Login/RequireAuth';
 import Login from './Pages/Login/Login';
+import Register from './Pages/Login/Register';
 
 
 
@@ -21,6 +22,7 @@ function App() {
       </RequireAuth>
       }/>
    <Route path="/login" element={<Login />}/>
+   <Route path="/register" element={<Register />}/>
 
 
 
