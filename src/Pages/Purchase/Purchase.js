@@ -20,7 +20,9 @@ const Purchase = () => {
 
   const handleConfirm = (e) => {
     e.preventDefault();
-    const quantity = e.target.quantity.value;
+    const quantity = parseInt(e.target.quantity.value);
+    const phone = e.target.phone.value;
+    const address = e.target.address.value;
     const min = tool.min_order_quantity;
     const avail = tool.avail_quantity;
 
@@ -31,7 +33,63 @@ const Purchase = () => {
       toast.error("Your Quantity is greater than Available Quantity");
       setActive(!active);
     } else {
+      const fetchTool = avail;
+      const addQuan = fetchTool-quantity;
+      console.log(avail);
+     
+      const url = `http://localhost:5000/tools/${id}`;
+      fetch(url, {
+        method: "put",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({avail_quantity: addQuan}),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+         
+          e.target.reset();
+          setTool({ ...tool, avail_quantity: addQuan });
+          
+          
+        });
+
+        const order = {
+          tool_id: tool._id,
+          tool_name: tool.name,
+          user_name: user.displayName,
+          user_email: user.email,
+         quantity: quantity,
+          phone:phone,
+          address:address,
+          status:'unpaid'
+        
+  
+  
+      }
+
+      fetch('http://localhost:5000/ordered', {
+        method: 'POST',
+        body: JSON.stringify(order),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+        .then((response) => response.json())
+        .then(data => {
+ 
+
+toast(`Order Successful`)
+
+        })
+
+
+
     }
+
+
+
+  
   };
 
   return (

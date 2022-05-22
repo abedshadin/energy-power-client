@@ -19,9 +19,21 @@ const Navbar = () => {
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
-        <label class="btn btn-square btn-ghost"  for="my-drawer-2">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-    </label>
+        <label className="btn btn-square btn-ghost lg:hidden" for="my-drawer-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            className="inline-block w-5 h-5 stroke-current"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </label>
         <Link className="btn btn-ghost normal-case text-xl" to="/">
           Energy Power
         </Link>
@@ -42,14 +54,18 @@ const Navbar = () => {
       <li><a>Item 3</a></li>
     </ul> */}
 
-        {user ? 
+        {user ? (
           <div className="dropdown dropdown-end">
             <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                {
-                  user.photoURL ? <img src={user?.photoURL} alt="User"></img>:<img src="https://d29fhpw069ctt2.cloudfront.net/icon/image/84587/preview.svg" alt="User"></img>
-                }
-               
+                {user.photoURL ? (
+                  <img src={user?.photoURL} alt="User"></img>
+                ) : (
+                  <img
+                    src="https://d29fhpw069ctt2.cloudfront.net/icon/image/84587/preview.svg"
+                    alt="User"
+                  ></img>
+                )}
               </div>
             </label>
             <ul
@@ -61,7 +77,6 @@ const Navbar = () => {
               <li>
                 <Link to="/dashboard" className="justify-between">
                   Dashboard
-            
                 </Link>
               </li>
               <li>
@@ -72,7 +87,7 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-         : 
+        ) : (
           <div className="dropdown dropdown-end">
             <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
@@ -84,21 +99,18 @@ const Navbar = () => {
               className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link to="/login"className="justify-between">
+                <Link to="/login" className="justify-between">
                   Login
-                 
                 </Link>
               </li>
               <li>
-              <Link to="/register"className="justify-between">
+                <Link to="/register" className="justify-between">
                   Register
-                 
                 </Link>
               </li>
-              
             </ul>
           </div>
-        }
+        )}
       </div>
     </div>
   );
