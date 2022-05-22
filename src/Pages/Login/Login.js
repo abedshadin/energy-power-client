@@ -15,47 +15,48 @@ const Login = () => {
     navigate(from, { replace: true });
   }
   if (loading) {
-    return <Loading></Loading>
-}
-if(error){
-    signInError= <p className='text-red-500'><small>{error?.message}</small></p>
-}
-
+    return <Loading></Loading>;
+  }
+  if (error) {
+    signInError = (
+      <p className="text-red-500">
+        <small>{error?.message}</small>
+      </p>
+    );
+  }
 
   return (
-    <div class="hero  bg-base-200">
-      <div class="hero-content flex-col lg:flex-row-reverse">
-        <div class="card flex-shrink-0 w-80 max-w-sm shadow-2xl bg-base-100">
-          <div class="card-body">
+    <div className="hero  bg-base-200">
+      <div className="hero-content flex-col lg:flex-row-reverse">
+        <div className="card flex-shrink-0 w-80 max-w-sm shadow-2xl bg-base-100">
+          <div className="card-body">
             <form>
               <h1 className="text-center text-2xl text-white">Login</h1>
-              <div class="form-control">
-                <label class="label">
-                  <span class="label-text">Email</span>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Email</span>
                 </label>
                 <input
                   type="text"
                   placeholder="email"
                   name="email"
-                  class="input input-bordered"
+                  className="input input-bordered"
                 />
               </div>
-              <div class="form-control">
-                <label class="label">
-                  <span class="label-text">Password</span>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Password</span>
                 </label>
                 <input
                   type="text"
                   name="password"
                   placeholder="password"
-                  class="input input-bordered"
+                  className="input input-bordered"
                 />
-                <label class="label">
-                  <a>
-                    Forgot password?
-                  </a>
+                <label className="label">
+                  <a>Forgot password?</a>
                 </label>
-                <label class="label">
+                <label className="label">
                   <p className="label-text-alt text-white">
                     New on Energy Power ?{" "}
                     <Link to="/register" className="link link-hover text-info">
@@ -65,15 +66,15 @@ if(error){
                 </label>
               </div>
               {signInError}
-              <div class="form-control mt-6">
-                <button class="btn btn-primary">Login</button>
+              <div className="form-control mt-6">
+                <button className="btn btn-primary">Login</button>
               </div>
             </form>
-            <div class="flex flex-col w-full border-opacity-50">
-              <div class="divider">OR</div>
-              <div class="text-center">
+            <div className="flex flex-col w-full border-opacity-50">
+              <div className="divider">OR</div>
+              <div className="text-center">
                 <button
-                  class="btn btn-success"
+                  className="btn btn-success"
                   onClick={() => signInWithGoogle()}
                 >
                   Continue with google
