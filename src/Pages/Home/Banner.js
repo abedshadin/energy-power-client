@@ -5,7 +5,7 @@ import hammer from '../../assets/images/hammer.png'
 import drill from '../../assets/images/drill.png'
 const Banner = () => {
     return (
-        <div class="carousel w-full mb-10">
+        <div class="carousel w-full mb-10 h-screen">
   <div id="slide1" class="carousel-item relative w-full">
     <img src={tools} class="w-full" alt='slider image'/> 
     <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
