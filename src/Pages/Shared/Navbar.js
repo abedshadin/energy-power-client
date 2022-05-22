@@ -56,10 +56,10 @@ const Navbar = () => {
               <li className="text-center text-white">{user.displayName}</li>
               <div className="divider"></div>
               <li>
-                <a className="justify-between">
-                  Profile
+                <Link to="/dashboard" className="justify-between">
+                  Dashboard
             
-                </a>
+                </Link>
               </li>
               <li>
                 <a>Settings</a>

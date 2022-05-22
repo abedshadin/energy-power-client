@@ -7,6 +7,7 @@ import Error from './Pages/Shared/Error';
 import RequireAuth from './Pages/Login/RequireAuth';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Login/Register';
+import Dashboard from './Pages/Dashboard/Dashboard';
 
 
 
@@ -19,6 +20,11 @@ function App() {
       <Route path="/purchase/:id" element={
     <RequireAuth>
       <Purchase />
+      </RequireAuth>
+      }/>
+       <Route path="/dashboard" element={
+    <RequireAuth>
+      <Dashboard />
       </RequireAuth>
       }/>
    <Route path="/login" element={<Login />}/>
