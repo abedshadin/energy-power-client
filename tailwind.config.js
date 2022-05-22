@@ -3,6 +3,9 @@ module.exports = {
   theme: {
     extend: {},
   },
+  variants: {
+    opacity: ({ after }) => after(['disabled'])
+  },
   daisyui: {
     themes: ["light", "dark", "cupcake"],
   },
