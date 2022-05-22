@@ -55,7 +55,7 @@ const Register = () => {
                   type="text"
                   placeholder="name"
                   name="name"
-                  className="input input-bordered"  onChange={(e) => setDisplayName(e.target.value)}
+                  className="input input-bordered"  onChange={(e) => setDisplayName(e.target.value)} required
                 />
               </div>
               <div className="form-control">
@@ -63,10 +63,10 @@ const Register = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                  type="text"
+                  type="email"
                   placeholder="email"
                   name="email"
-                  className="input input-bordered"  onChange={(e) => setEmail(e.target.value)}
+                  className="input input-bordered"  onChange={(e) => setEmail(e.target.value)} required
                 />
               </div>
               <div className="form-control">
@@ -74,10 +74,10 @@ const Register = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="text"
+                  type="password"
                   name="password"
                   placeholder="password"
-                  className="input input-bordered"     onChange={(e) => setPassword(e.target.value)}
+                  className="input input-bordered"     onChange={(e) => setPassword(e.target.value)} required
                 />
                 <label className="label">
                   <p className="label-text-alt text-white">

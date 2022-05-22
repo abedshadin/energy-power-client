@@ -53,10 +53,12 @@ const Navbar = () => {
               tabIndex="0"
               className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
             >
+              <li className="text-center text-white">{user.displayName}</li>
+              <div className="divider"></div>
               <li>
                 <a className="justify-between">
                   Profile
-                  <span className="badge">New</span>
+            
                 </a>
               </li>
               <li>
