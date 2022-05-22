@@ -1,34 +1,51 @@
-import React from "react";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import React, { useState } from "react";
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 
 const Register = () => {
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
+  const [
+    createUserWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useCreateUserWithEmailAndPassword(auth);
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   let signInError;
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
-  if (user) {
+  const [displayName, setDisplayName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  if (user || guser) {
     navigate(from, { replace: true });
   }
-  if (loading) {
+  if (loading || updating || gloading) {
     return <Loading></Loading>;
   }
-  if (error) {
+  if (error || gerror || updateError) {
     signInError = (
       <p className="text-red-500">
         <small>{error?.message}</small>
       </p>
     );
   }
+  const onSubmit =async e => {
+    e.preventDefault();
+    await createUserWithEmailAndPassword(email, password);
+     await updateProfile({ displayName: displayName});
+     console.log(email,password,displayName);
+   
+ }
   return (
     <div className="hero  bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="card flex-shrink-0 w-80 max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">
-            <form>
+            <form onSubmit={onSubmit}>
               <h1 className="text-center text-2xl text-white">Register</h1>
               <div className="form-control">
                 <label className="label">
@@ -38,7 +55,7 @@ const Register = () => {
                   type="text"
                   placeholder="name"
                   name="name"
-                  className="input input-bordered"
+                  className="input input-bordered"  onChange={(e) => setDisplayName(e.target.value)}
                 />
               </div>
               <div className="form-control">
@@ -49,7 +66,7 @@ const Register = () => {
                   type="text"
                   placeholder="email"
                   name="email"
-                  className="input input-bordered"
+                  className="input input-bordered"  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="form-control">
@@ -60,7 +77,7 @@ const Register = () => {
                   type="text"
                   name="password"
                   placeholder="password"
-                  className="input input-bordered"
+                  className="input input-bordered"     onChange={(e) => setPassword(e.target.value)}
                 />
                 <label className="label">
                   <p className="label-text-alt text-white">

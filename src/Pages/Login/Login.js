@@ -1,15 +1,21 @@
+import { async } from "@firebase/util";
 import React, { useState } from "react";
 import {
+  useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 
 const Login = () => {
   const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
+  const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(
+    auth
+  );
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const [email, setEmail] = useState("");
@@ -21,20 +27,34 @@ const Login = () => {
   if (guser || user) {
     navigate(from, { replace: true });
   }
-  if (gloading || loading) {
+  if (gloading || loading|| sending) {
     return <Loading></Loading>;
   }
-  if (gerror || error) {
+  if (gerror || error || resetError) {
     signInError = (
       <p className="text-red-500">
-        <small>{gerror?.message}</small>
+        <small>{gerror?.message || error?.message || resetError?.message}</small>
       </p>
     );
   }
   const handleLogin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(email, password);
+    console.log(email);
   };
+  const reset =async e =>{
+   
+    if(email){
+      await sendPasswordResetEmail(email);
+      toast('Sent email');
+    }
+    else{
+      toast('Please Enter Email')
+    }
+ 
+    
+  
+  }
   return (
     <div className="hero  bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -51,7 +71,7 @@ const Login = () => {
                   placeholder="email"
                   name="email"
                   className="input input-bordered"
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)} required
                 />
               </div>
               <div className="form-control">
@@ -63,14 +83,14 @@ const Login = () => {
                   name="password"
                   placeholder="password"
                   className="input input-bordered"
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)} required
                 />
                 <label className="label">
-                  <a>Forgot password?</a>
+                  <button onClick={reset}>Forgot password?</button>
                 </label>
                 <label className="label">
                   <p className="label-text-alt text-white">
-                    New on Energy Power ?{" "}
+                    New on Energy Power ?
                     <Link to="/register" className="link link-hover text-info">
                       Please Register Now
                     </Link>
@@ -96,6 +116,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <ToastContainer></ToastContainer>
     </div>
   );
 };
