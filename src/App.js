@@ -17,11 +17,17 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import useAdmin from "./hooks/useAdmin";
 import auth from "./firebase.init";
 import UpdateProfile from "./Pages/Dashboard/UpdateProfile";
+import AllOrders from "./Pages/Dashboard/AllOrders";
+import AddProduct from "./Pages/Dashboard/AddProduct";
+import ManageProduct from "./Pages/Dashboard/ManageProduct";
+import Loading from "./Pages/Shared/Loading";
 
 function App() {
-  const [user] = useAuthState(auth);
+  const [user,loading] = useAuthState(auth);
   const [admin] = useAdmin(user);
-
+if(loading){
+  return <Loading></Loading>
+}
   return (
     <div>
       <Navbar></Navbar>
@@ -49,6 +55,9 @@ function App() {
           <Route path="profile" element={<Profile></Profile>}></Route>
           <Route path="update" element={<UpdateProfile></UpdateProfile>}></Route>
           {admin && <Route path="users" element={<Users></Users>}></Route>}
+          {admin && <Route path="allorders" element={<AllOrders></AllOrders>}></Route>}
+          {admin && <Route path="addproduct" element={<AddProduct></AddProduct>}></Route>}
+          {admin && <Route path="mngproduct" element={<ManageProduct></ManageProduct>}></Route>}
         </Route>
 
         <Route path="login" element={<Login />} />
