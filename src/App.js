@@ -11,6 +11,8 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import Orders from './Pages/Dashboard/Orders';
 import Reviews from './Pages/Dashboard/Reviews';
 import Profile from './Pages/Dashboard/Profile';
+import Blogs from './Pages/Blogs/Blogs';
+import Users from './Pages/Dashboard/Users';
 
 
 
@@ -20,6 +22,7 @@ function App() {
       <Navbar></Navbar>
       <Routes>
       <Route path="/" element={<Home />}/>
+      <Route path="/blogs" element={<Blogs />}/>
       <Route path="purchase/:id" element={
     <RequireAuth>
       <Purchase />
@@ -33,6 +36,7 @@ function App() {
 <Route index element={<Orders></Orders>}></Route>
 <Route path="review" element={<Reviews></Reviews>}></Route>
 <Route path="profile" element={<Profile></Profile>}></Route>
+<Route path="users" element={<Users></Users>}></Route>
 
 
 

@@ -6,41 +6,57 @@ const Profile = () => {
     const [user,loading] = useAuthState(auth);
     return (
         <div>
-            {user.displayName}
-            {user.email}
+            
+            
             <div class="overflow-x-auto">
   <table class="table w-full">
  
     <thead>
       <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
+        <th className='text-center text-2xl text-white' colSpan={2}>User Information</th>
+       
       </tr>
     </thead>
     <tbody>
      
       <tr>
-        <th>1</th>
-        <td>Cy Ganderton</td>
-        <td>Quality Control Specialist</td>
-        <td>Blue</td>
+        <th>Name</th>
+        <td>{user.displayName}</td>
+        
       </tr>
       
       <tr class="active">
-        <th>2</th>
-        <td>Hart Hagerty</td>
-        <td>Desktop Support Technician</td>
-        <td>Purple</td>
+      
+        <td>Email</td>
+        <td>{user.email}</td>
       </tr>
 
       <tr>
-        <th>3</th>
-        <td>Brice Swyre</td>
-        <td>Tax Accountant</td>
+      
+        <td>Phone</td>
         <td>Red</td>
       </tr>
+      <tr class="active">
+      
+      <td >Education</td>
+      <td>Red</td>
+    </tr>
+    <tr>
+      
+      <td>Location</td>
+      <td>Red</td>
+    </tr>
+    <tr class="active">
+      
+      <td>Facebook</td>
+      <td>Red</td>
+    </tr>
+    <tr>
+      
+      <td>Linkedin</td>
+      <td>Red</td>
+    </tr>
+
     </tbody>
   </table>
 </div>
