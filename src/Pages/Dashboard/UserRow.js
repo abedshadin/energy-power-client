@@ -14,7 +14,8 @@ const UserRow = ({user}) => {
   .then((response) => response.json())
   .then((json) =>{
       console.log(json);
-      toast('Admin Maked')
+     toast('Admin Created');
+      
   });
     }
     return (
