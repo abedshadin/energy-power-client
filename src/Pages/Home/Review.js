@@ -8,7 +8,7 @@ const Review = ({ review }) => {
           <h2 className="card-title text-2xl">{review.name}</h2>
           <div className="avatar">
             <div className="w-16 rounded-full ring ring-accent  ">
-              <img src={review.img} />
+              <img src={review.img} alt='USER'/>
             </div>
           </div>
         </div>
