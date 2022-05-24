@@ -42,7 +42,7 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(email, password);
-    console.log(email);
+  
   };
   const reset =async e =>{
    

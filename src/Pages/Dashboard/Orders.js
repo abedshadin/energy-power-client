@@ -41,8 +41,6 @@ const Orders = () => {
     })
       .then((response) => response.json())
       .then((json) => {
-      
-       
         toast("Order Paid");
       });
   };
@@ -79,7 +77,12 @@ const Orders = () => {
                   {" "}
                   {order.status === "unpaid" ? (
                     <td className="uppercase text-danger">
-                      <button className="btn btn-danger" onClick={()=>makePaid(order._id)}>Pay Now</button>
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => makePaid(order._id)}
+                      >
+                        Pay Now
+                      </button>
                     </td>
                   ) : (
                     <td className="uppercase text-danger">

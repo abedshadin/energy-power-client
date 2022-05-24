@@ -39,7 +39,7 @@ const Register = () => {
     e.preventDefault();
     await createUserWithEmailAndPassword(email, password);
      await updateProfile({ displayName: displayName});
-     console.log(email,password,displayName);
+
    
  }
   return (

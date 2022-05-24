@@ -14,7 +14,6 @@ const UpdateProfile = () => {
     return <Loading></Loading>;
   }
   const onSubmit = (data) => {
-    console.log(data);
     const proUp = {
       phone: data.phone,
       education: data.education,
@@ -31,7 +30,6 @@ const UpdateProfile = () => {
     })
       .then((response) => response.json())
       .then((json) => {
-        console.log(json);
         toast("Information Updated");
         navigate("/dashboard/profile");
       });

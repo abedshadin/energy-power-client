@@ -14,7 +14,6 @@ const AddProduct = () => {
     return <Loading></Loading>;
   }
   const onSubmit = (data) => {
-    console.log(data);
     const addTool = {
       email: email,
       name: data.name,
@@ -33,7 +32,6 @@ const AddProduct = () => {
     })
       .then((response) => response.json())
       .then((json) => {
-        console.log(json);
         toast("Tool Added");
       });
   };

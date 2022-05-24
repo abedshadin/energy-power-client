@@ -5,8 +5,6 @@ import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 import { toast, ToastContainer } from "react-toastify";
 
-
-
 const Purchase = () => {
   const { id } = useParams();
   const [active, setActive] = useState(true);
@@ -31,7 +29,7 @@ const Purchase = () => {
 
     if (quantity < min) {
       toast.error("Your Quantity is less than Min. Order Amount");
-      
+
       e.target.reset();
       setActive(!active);
     } else if (quantity > avail) {
@@ -143,7 +141,8 @@ const Purchase = () => {
                 type="text"
                 required
                 placeholder="Phone"
-                name="phone" id="phone"
+                name="phone"
+                id="phone"
                 className="input input-bordered w-full max-w-xs m-2"
               />
               <input

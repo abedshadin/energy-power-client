@@ -3,7 +3,11 @@ import Loading from "../Shared/Loading";
 import UserRow from "./UserRow";
 
 const Users = () => {
-  const { data: users, isLoading,refetch } = useQuery("users", () =>
+  const {
+    data: users,
+    isLoading,
+    refetch,
+  } = useQuery("users", () =>
     fetch("http://localhost:5000/user").then((res) => res.json())
   );
   if (isLoading) {
@@ -23,7 +27,7 @@ const Users = () => {
           </thead>
           <tbody>
             {users.map((user) => (
-              <UserRow key={user._id} user={user}  refetch={refetch} ></UserRow>
+              <UserRow key={user._id} user={user} refetch={refetch}></UserRow>
             ))}
           </tbody>
         </table>
