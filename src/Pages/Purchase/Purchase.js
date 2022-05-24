@@ -4,8 +4,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 import { toast, ToastContainer } from "react-toastify";
-import { Modal } from 'react-dark-modal';
-import 'react-dark-modal/dist/index.css';
+
+
 
 const Purchase = () => {
   const { id } = useParams();
@@ -31,9 +31,12 @@ const Purchase = () => {
 
     if (quantity < min) {
       toast.error("Your Quantity is less than Min. Order Amount");
+      
+      e.target.reset();
       setActive(!active);
     } else if (quantity > avail) {
       toast.error("Your Quantity is greater than Available Quantity");
+      e.target.reset();
       setActive(!active);
     } else {
       // const fetchTool = avail;
@@ -76,16 +79,14 @@ const Purchase = () => {
         .then((data) => {
           toast(`Order Successful`);
 
-        document.getElementById('my-modal').click();
+          document.getElementById("my-modal").click();
+          e.target.reset();
         });
     }
   };
 
-
-  
   return (
     <div>
-      
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
           <img
@@ -104,7 +105,7 @@ const Purchase = () => {
             </p>
             <p className="text-2xl mb-1">Description: {tool.s_desc}</p>
 
-            <label for="my-modal" className="btn modal-button btn-primary">
+            <label htmlFor="my-modal" className="btn modal-button btn-primary">
               Checkout
             </label>
           </div>
@@ -114,7 +115,7 @@ const Purchase = () => {
       <div className="modal">
         <div className="modal-box relative">
           <label
-            for="my-modal"
+            htmlFor="my-modal"
             className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
@@ -139,20 +140,23 @@ const Purchase = () => {
                 disabled
               />
               <input
-                type="text" required
+                type="text"
+                required
                 placeholder="Phone"
-                name="phone" 
+                name="phone" id="phone"
                 className="input input-bordered w-full max-w-xs m-2"
               />
               <input
                 type="number"
                 placeholder="Quantity"
-                name="quantity"  value={tool.min_order_quantity}
+                name="quantity"
+                defaultValue={tool.min_order_quantity}
                 className="input input-bordered w-full max-w-xs m-2"
               />
               <textarea
                 type="text"
-                placeholder="Address" required  value='dfghdh'
+                placeholder="Address"
+                required
                 name="address"
                 className="input input-bordered w-full max-w-xs  m-2"
               ></textarea>

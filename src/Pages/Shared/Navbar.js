@@ -22,7 +22,7 @@ const Navbar = () => {
         {pathname.includes("dashboard") && (
           <label
             className="btn btn-square btn-ghost lg:hidden"
-            for="my-drawer-2"
+            htmlFor="my-drawer-2"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -31,9 +31,9 @@ const Navbar = () => {
               className="inline-block w-5 h-5 stroke-current"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M4 6h16M4 12h16M4 18h16"
               ></path>
             </svg>
@@ -44,11 +44,11 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="dropdown dropdown-end">
-        <label tabindex="0" className="btn m-1">
+        <label tabIndex="0" className="btn m-1">
           More
         </label>
         <ul
-          tabindex="0"
+          tabIndex="0"
           className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
         >
           <li>
@@ -84,6 +84,7 @@ const Navbar = () => {
               tabIndex="0"
               className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
             >
+              
               <li className="text-center text-white">{user.displayName}</li>
               <div className="divider"></div>
               <li>

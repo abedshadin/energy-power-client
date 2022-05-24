@@ -31,7 +31,10 @@ if(loading){
   return <Loading></Loading>
 }
   return (
-    <div>
+    <div className="page-container">
+<div className="content-wrap">
+
+
       <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -69,7 +72,7 @@ if(loading){
 
         <Route path="*" element={<Error />} />
       </Routes>
-
+      </div>
       <Footer></Footer>
     </div>
   );
