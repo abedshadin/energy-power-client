@@ -41,7 +41,8 @@ const Orders = () => {
     })
       .then((response) => response.json())
       .then((json) => {
-        console.log(json);
+      
+       
         toast("Order Paid");
       });
   };

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 
 const AllOrders = () => {
     const [allOrders,setAllOrders]= useState([]);
@@ -6,7 +7,7 @@ const AllOrders = () => {
         fetch(`http://localhost:5000/orders`)
         .then(res=>res.json())
         .then(data=>setAllOrders(data));
-    },[])
+    },[allOrders])
     const handleDelete = (id) => {
         const proceed = window.confirm("Are you sure?");
     
@@ -19,9 +20,24 @@ const AllOrders = () => {
             .then((data) => {
               const remaining = allOrders.filter((iteml) => iteml._id !== id);
               setAllOrders(remaining);
+              toast("Cancelled");
             });
         }
       };
+  
+      const handleShipped = (id) => {
+        fetch(`http://localhost:5000/user/orderShip/${id}`, {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        })
+          .then((response) => response.json())
+          .then((json) => {
+          
+           
+            toast("Shipped");
+          });}
 
     return (
         <div>
@@ -36,6 +52,8 @@ const AllOrders = () => {
         <th>Email</th>
         <th>Tool Name</th>
         <th>Status</th>
+        <th>Track</th>
+        <th>Change Track</th>
         <th>Cancel</th>
         
       </tr>
@@ -68,7 +86,17 @@ const AllOrders = () => {
                     <td className='uppercase'>
                     {order.status}
                     </td>
-                 
+                    <td className='uppercase'>
+                        {
+                            order.ap_status ==="shipped" ? <p className='text-green-500'>{order.ap_status}</p>: <p className='text-red-500'>{order.ap_status}</p>
+                        }
+                   
+                    </td>
+                    <td className='uppercase'>
+                    {
+                            order.ap_status==='pending' ?<button class="btn btn-ghost btn-xs text-white bg-green-800" onClick={() => handleShipped(order._id)}>Shipped</button>:<button class="btn btn-ghost btn-xs text-white bg-orange-800" disabled>Cancel</button>
+                        }
+                    </td>
                     <td>
                         {
                             order.status==='unpaid' ?<button class="btn btn-ghost btn-xs text-white bg-orange-800" onClick={() => handleDelete(order._id)}>Cancel</button>:<button class="btn btn-ghost btn-xs text-white bg-orange-800" disabled>Cancel</button>
@@ -83,6 +111,7 @@ const AllOrders = () => {
     
   </table>
         </div>
+        <ToastContainer></ToastContainer>
         </div>
     );
 };
