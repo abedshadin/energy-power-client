@@ -57,7 +57,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/blogs" className="  text-white">
+            <Link to="/portfolio" className="  text-white">
               My Portfolio
             </Link>
           </li>

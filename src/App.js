@@ -1,7 +1,7 @@
 import "./App.css";
 import Navbar from "./Pages/Shared/Navbar";
 import Home from "./Pages/Home/Home";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Purchase from "./Pages/Purchase/Purchase";
 import Error from "./Pages/Shared/Error";
 import RequireAuth from "./Pages/Login/RequireAuth";
@@ -22,7 +22,7 @@ import AddProduct from "./Pages/Dashboard/AddProduct";
 import ManageProduct from "./Pages/Dashboard/ManageProduct";
 import Loading from "./Pages/Shared/Loading";
 import Footer from "./Pages/Shared/Footer";
-import Test from "./Pages/Home/Test";
+import Portfolio from "./Pages/Portfolio/Portfolio";
 
 function App() {
   const [user,loading] = useAuthState(auth);
@@ -35,7 +35,7 @@ if(loading){
       <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/test" element={<Test />} />
+        <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route
           path="purchase/:id"
