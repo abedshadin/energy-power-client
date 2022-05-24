@@ -35,18 +35,18 @@ const Reviews = () => {
   return (
     <div>
       <div className="flex justify-center items-center justify-items-center">
-        <div class="card w-96 bg-base-100  shadow-xl">
-          <div class="card-body items-center text-center">
-            <h2 class="card-title">Write A Review</h2>
+        <div className="card w-96 bg-base-100  shadow-xl">
+          <div className="card-body items-center text-center">
+            <h2 className="card-title">Write A Review</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
               <input
-                class="input input-bordered w-full max-w-xs mb-2"
+                className="input input-bordered w-full max-w-xs mb-2"
                 placeholder="Type Review"
                 required
                 {...register("review")}
               />
               <select
-                class="input input-bordered w-full max-w-xs mb-2"
+                className="input input-bordered w-full max-w-xs mb-2"
                 {...register("ratings")}
               >
                 <option value="★★★★★">5 ★★★★★</option>
@@ -55,7 +55,7 @@ const Reviews = () => {
                 <option value="★★☆☆☆">2 ★★</option>
                 <option value="★☆☆☆☆">1 ★</option>
               </select>
-              <input class="btn btn-primary" type="submit" />
+              <input className="btn btn-primary" type="submit" />
             </form>
           </div>
         </div>

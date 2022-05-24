@@ -2,12 +2,12 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { signOut } from "firebase/auth";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Loading from "./Loading";
 
 const Navbar = () => {
   const [user, loading] = useAuthState(auth);
-
+  const { pathname } = useLocation();
   const logout = () => {
     signOut(auth);
   };
@@ -15,35 +15,56 @@ const Navbar = () => {
   if (loading) {
     return <Loading></Loading>;
   }
-  console.log(user);
+
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
-        <label className="btn btn-square btn-ghost lg:hidden" for="my-drawer-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            className="inline-block w-5 h-5 stroke-current"
+        {pathname.includes("dashboard") && (
+          <label
+            className="btn btn-square btn-ghost lg:hidden"
+            for="my-drawer-2"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
-          </svg>
-        </label>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              className="inline-block w-5 h-5 stroke-current"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </label>
+        )}
         <Link className="btn btn-ghost normal-case text-xl" to="/">
           Energy Power
         </Link>
       </div>
+      <div className="dropdown dropdown-end">
+        <label tabindex="0" className="btn m-1">
+          More
+        </label>
+        <ul
+          tabindex="0"
+          className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+        >
+          <li>
+            <Link to="/blogs" className="  text-white">
+              Blogs
+            </Link>
+          </li>
+          <li>
+            <Link to="/blogs" className="  text-white">
+              My Portfolio
+            </Link>
+          </li>
+        </ul>
+      </div>
       <div className="flex-none gap-2">
-        <ul className="menu menu-horizontal p-0">
-      <li><Link to="/blogs" className="btn btn-outline text-white">Blogs</Link></li>
-     
-      
-    </ul>
+        <ul className="menu menu-horizontal p-0"></ul>
 
         {user ? (
           <div className="dropdown dropdown-end">
@@ -70,7 +91,7 @@ const Navbar = () => {
                   Dashboard
                 </Link>
               </li>
-             
+
               <li>
                 <button onClick={logout}>Logout</button>
               </li>

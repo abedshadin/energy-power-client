@@ -16,7 +16,7 @@ const Home = () => {
       <Reviews></Reviews>
       <Newsletter></Newsletter>
       <Contact></Contact>
-      <Footer></Footer>
+    
     </div>
   );
 };

@@ -21,6 +21,8 @@ import AllOrders from "./Pages/Dashboard/AllOrders";
 import AddProduct from "./Pages/Dashboard/AddProduct";
 import ManageProduct from "./Pages/Dashboard/ManageProduct";
 import Loading from "./Pages/Shared/Loading";
+import Footer from "./Pages/Shared/Footer";
+import Test from "./Pages/Home/Test";
 
 function App() {
   const [user,loading] = useAuthState(auth);
@@ -33,6 +35,7 @@ if(loading){
       <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/test" element={<Test />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route
           path="purchase/:id"
@@ -66,6 +69,8 @@ if(loading){
 
         <Route path="*" element={<Error />} />
       </Routes>
+
+      <Footer></Footer>
     </div>
   );
 }

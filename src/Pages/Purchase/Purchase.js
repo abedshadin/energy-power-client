@@ -33,67 +33,54 @@ const Purchase = () => {
       toast.error("Your Quantity is greater than Available Quantity");
       setActive(!active);
     } else {
-      const fetchTool = avail;
-      const addQuan = fetchTool-quantity;
-      console.log(avail);
-     
-      const url = `http://localhost:5000/tools/${id}`;
-      fetch(url, {
-        method: "put",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({avail_quantity: addQuan}),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-         
-          e.target.reset();
-          setTool({ ...tool, avail_quantity: addQuan });
-          
-          
-        });
+      // const fetchTool = avail;
+      // const addQuan = fetchTool - quantity;
+      // console.log(avail);
 
-        const order = {
-          tool_id: tool._id,
-          tool_name: tool.name,
-          user_name: user.displayName,
-          user_email: user.email,
-         quantity: quantity,
-          phone:phone,
-          address:address,
-          status:'unpaid'
-        
-  
-  
-      }
+      // const url = `http://localhost:5000/tools/${id}`;
+      // fetch(url, {
+      //   method: "put",
+      //   headers: {
+      //     "content-type": "application/json",
+      //   },
+      //   body: JSON.stringify({ avail_quantity: addQuan }),
+      // })
+      //   .then((res) => res.json())
+      //   .then((data) => {
+      //     e.target.reset();
+      //     setTool({ ...tool, avail_quantity: addQuan });
+      //   });
 
-      fetch('http://localhost:5000/ordered', {
-        method: 'POST',
+      const order = {
+        tool_id: tool._id,
+        tool_name: tool.name,
+        user_name: user.displayName,
+        user_email: user.email,
+        quantity: quantity,
+        phone: phone,
+        address: address,
+        status: "unpaid",
+      };
+
+      fetch("http://localhost:5000/ordered", {
+        method: "POST",
         body: JSON.stringify(order),
         headers: {
-          'Content-type': 'application/json; charset=UTF-8',
+          "Content-type": "application/json; charset=UTF-8",
         },
       })
         .then((response) => response.json())
-        .then(data => {
- 
+        .then((data) => {
+          toast(`Order Successful`);
 
-toast(`Order Successful`)
-
-        })
-
-
-
+        document.getElementById('my-modal').click();
+        });
     }
-
-
-
-  
   };
 
   return (
     <div>
+      
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
           <img
@@ -147,20 +134,20 @@ toast(`Order Successful`)
                 disabled
               />
               <input
-                type="text"
+                type="text" required
                 placeholder="Phone"
-                name="phone"
+                name="phone" 
                 className="input input-bordered w-full max-w-xs m-2"
               />
               <input
                 type="number"
                 placeholder="Quantity"
-                name="quantity"
+                name="quantity"  value={tool.min_order_quantity}
                 className="input input-bordered w-full max-w-xs m-2"
               />
               <textarea
                 type="text"
-                placeholder="Address"
+                placeholder="Address" required  value='dfghdh'
                 name="address"
                 className="input input-bordered w-full max-w-xs  m-2"
               ></textarea>
