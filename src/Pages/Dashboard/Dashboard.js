@@ -17,42 +17,37 @@ const Dashboard = () => {
       <div className="drawer-side">
         <label for="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
-         
-        { !admin ? <>
-                <li>
- <Link to="/dashboard">My Orders</Link>
-</li>
-<li>
- <Link to="/dashboard/review">My Review</Link>
-</li>
-</> 
-:
+          {!admin ? (
+            <>
+              <li>
+                <Link to="/dashboard">My Orders</Link>
+              </li>
+              <li>
+                <Link to="/dashboard/review">My Review</Link>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link to="/dashboard/allorders">All Orders</Link>
+              </li>
+            </>
+          )}
 
-<><li>
-<Link to="/dashboard/allorders">All Orders</Link>
-</li>
-</>
-        }
-         
-         
-         
           <li>
             <Link to="/dashboard/profile">My Profile</Link>
           </li>
 
-          {
-            admin &&  <li>
-              
-            <Link to="/dashboard/users">Make Admin</Link>
-            
-            <Link to="/dashboard/addproduct">Add Product</Link>
-            <Link to="/dashboard/mngproduct">Manage Product</Link>
-          </li>
-          }
-         
+          {admin && (
+            <li>
+              <Link to="/dashboard/users">Make Admin</Link>
+
+              <Link to="/dashboard/addproduct">Add Product</Link>
+              <Link to="/dashboard/mngproduct">Manage Product</Link>
+            </li>
+          )}
         </ul>
       </div>
-      
     </div>
   );
 };

@@ -4,6 +4,9 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 import { toast, ToastContainer } from "react-toastify";
+import { Modal } from 'react-dark-modal';
+import 'react-dark-modal/dist/index.css';
+
 const Purchase = () => {
   const { id } = useParams();
   const [active, setActive] = useState(true);
@@ -78,6 +81,8 @@ const Purchase = () => {
     }
   };
 
+
+  
   return (
     <div>
       

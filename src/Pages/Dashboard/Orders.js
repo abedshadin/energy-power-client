@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
-import DeleteConfirm from "./DeleteConfirm";
+
 
 const Orders = () => {
   const [user, loading] = useAuthState(auth);
@@ -49,8 +49,7 @@ const Orders = () => {
         </thead>
 
         <tbody>
-          {orders.map((order, index) => (
-            <tr key={order._id}>
+          {orders.map((order, index) => <tr>
               <th>{index + 1}</th>
               <td>{order.tool_name}</td>
               <td>{order.quantity}</td>
@@ -77,6 +76,7 @@ const Orders = () => {
               </td>
               {order.status === "unpaid" ? (
                 <td className="uppercase text-danger">
+                    
                   <button
                     className="btn btn-danger"
                     onClick={() => handleDelete(order._id)}
@@ -86,16 +86,17 @@ const Orders = () => {
                 </td>
               ) : (
                 <td className="uppercase text-danger">
+              
                   <button className="btn btn-danger" disabled>
                     X
                   </button>
                 </td>
               )}
-            </tr>
-          ))}
+            </tr>)}
         </tbody>
       </table>
     </div>
+
     </div>
   );
 };
