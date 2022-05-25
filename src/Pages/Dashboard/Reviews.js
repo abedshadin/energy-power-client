@@ -11,7 +11,7 @@ const Reviews = () => {
   if (loading) {
     return <Loading></Loading>;
   }
-  const onSubmit = (data,e) => {
+  const onSubmit = (data, e) => {
     const review = {
       name: user.displayName,
       email: user.email,

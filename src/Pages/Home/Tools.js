@@ -14,7 +14,7 @@ const Tools = () => {
         My Tools
       </h2>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 text-center ">
-        {tools.slice(Math.max(tools.length -6, 0)).map((tool) => (
+        {tools.slice(Math.max(tools.length - 6, 0)).map((tool) => (
           <Tool key={tool._id} tool={tool}></Tool>
         ))}
       </div>
