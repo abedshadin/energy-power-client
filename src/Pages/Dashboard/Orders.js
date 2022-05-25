@@ -12,7 +12,7 @@ const Orders = () => {
     fetch(`http://localhost:5000/myorders?email=${email}`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
-  }, []);
+  }, [orders]);
   if (loading) {
     return <Loading></Loading>;
   }

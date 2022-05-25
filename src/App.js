@@ -24,6 +24,7 @@ import Loading from "./Pages/Shared/Loading";
 import Footer from "./Pages/Shared/Footer";
 import Portfolio from "./Pages/Portfolio/Portfolio";
 
+
 function App() {
   const [user,loading] = useAuthState(auth);
   const [admin] = useAdmin(user);
@@ -39,6 +40,8 @@ if(loading){
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/portfolio" element={<Portfolio />} />
+     
+       
         <Route path="/blogs" element={<Blogs />} />
         <Route
           path="purchase/:id"
@@ -64,6 +67,7 @@ if(loading){
           {admin && <Route path="allorders" element={<AllOrders></AllOrders>}></Route>}
           {admin && <Route path="addproduct" element={<AddProduct></AddProduct>}></Route>}
           {admin && <Route path="mngproduct" element={<ManageProduct></ManageProduct>}></Route>}
+     
         </Route>
 
         <Route path="login" element={<Login />} />

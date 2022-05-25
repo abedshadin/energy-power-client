@@ -54,10 +54,12 @@ const Purchase = () => {
       //     e.target.reset();
       //     setTool({ ...tool, avail_quantity: addQuan });
       //   });
-
+const priceMulti = parseInt(tool.price*quantity);
+console.log(priceMulti);
       const order = {
         tool_id: tool._id,
         tool_name: tool.name,
+        total_price: priceMulti,
         user_name: user.displayName,
         user_email: user.email,
         quantity: quantity,
