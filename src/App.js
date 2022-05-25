@@ -76,8 +76,10 @@ if(loading){
 
         <Route path="*" element={<Error />} />
       </Routes>
+    
       </div>
       <Footer></Footer>
+ 
     </div>
   );
 }

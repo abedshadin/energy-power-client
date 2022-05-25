@@ -1,12 +1,14 @@
 import React from "react";
 
+
 const Blogs = () => {
   return (
+    
     <div className="container">
       <h1 className="text-center text-white text-3xl mb-5">Blogs</h1>
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
-          <thead>
+        <tbody>
             <tr>
               <th colSpan={4}>
                 {" "}
@@ -15,8 +17,8 @@ const Blogs = () => {
                 </h1>
               </th>
             </tr>
-          </thead>
-          <tbody>
+        
+       
             <tr>
               <th colSpan={4}>Ans</th>
             </tr>
@@ -74,7 +76,9 @@ const Blogs = () => {
           </tbody>
         </table>
       </div>
+     
     </div>
+   
   );
 };
 
