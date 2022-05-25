@@ -7,7 +7,7 @@ const Reviews = () => {
     fetch(`http://localhost:5000/reviews`)
       .then((res) => res.json())
       .then((data) => setReviews(data));
-  }, []);
+  }, [reviews]);
 
   return (
     <div className="flex flex-col justify-center items-center mb-4">

@@ -11,7 +11,7 @@ const Reviews = () => {
   if (loading) {
     return <Loading></Loading>;
   }
-  const onSubmit = (data) => {
+  const onSubmit = (data,e) => {
     const review = {
       name: user.displayName,
       email: user.email,
@@ -29,6 +29,7 @@ const Reviews = () => {
       .then((response) => response.json())
       .then((data) => {
         toast(`Order Successful`);
+        e.target.reset();
       });
   };
   return (

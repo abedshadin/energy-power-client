@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { resetState } from "react-modal/lib/helpers/ariaAppHider";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import auth from "../../firebase.init";
@@ -13,7 +14,7 @@ const AddProduct = () => {
   if (loading) {
     return <Loading></Loading>;
   }
-  const onSubmit = (data) => {
+  const onSubmit = (data,e) => {
     const addTool = {
       email: email,
       name: data.name,
@@ -34,6 +35,7 @@ const AddProduct = () => {
       .then((json) => {
         toast("Tool Added");
       });
+      e.target.reset();
   };
   return (
     <div>
