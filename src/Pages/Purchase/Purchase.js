@@ -11,7 +11,7 @@ const Purchase = () => {
   const [user, loading] = useAuthState(auth);
   const [tool, setTool] = useState({});
   useEffect(() => {
-    fetch(`http://localhost:5000/tools/${id}`)
+    fetch(`https://nameless-reef-38172.herokuapp.com/tools/${id}`)
       .then((res) => res.json())
       .then((data) => setTool(data));
   }, []);
@@ -41,7 +41,7 @@ const Purchase = () => {
       // const addQuan = fetchTool - quantity;
       // console.log(avail);
 
-      // const url = `http://localhost:5000/tools/${id}`;
+      // const url = `https://nameless-reef-38172.herokuapp.com/tools/${id}`;
       // fetch(url, {
       //   method: "put",
       //   headers: {
@@ -68,7 +68,7 @@ const Purchase = () => {
         status: "unpaid",
       };
 
-      fetch("http://localhost:5000/ordered", {
+      fetch("https://nameless-reef-38172.herokuapp.com/ordered", {
         method: "POST",
         body: JSON.stringify(order),
         headers: {

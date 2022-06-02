@@ -24,7 +24,7 @@ const AddProduct = () => {
       min_order_quantity: data.min_order_quantity,
       s_desc: data.s_desc,
     };
-    fetch(`http://localhost:5000/tools`, {
+    fetch(`https://nameless-reef-38172.herokuapp.com/tools`, {
       method: "Post",
       body: JSON.stringify(addTool),
       headers: {

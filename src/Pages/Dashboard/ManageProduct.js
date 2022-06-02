@@ -4,7 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 const ManageProduct = () => {
   const [tools, setTools] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/tools`)
+    fetch(`https://nameless-reef-38172.herokuapp.com/tools`)
       .then((res) => res.json())
       .then((data) => setTools(data));
   }, []);
@@ -12,7 +12,7 @@ const ManageProduct = () => {
     const proceed = window.confirm("Are you sure?");
 
     if (proceed) {
-      const url = `http://localhost:5000/tools/${id}`;
+      const url = `https://nameless-reef-38172.herokuapp.com/tools/${id}`;
       fetch(url, {
         method: "DELETE",
       })

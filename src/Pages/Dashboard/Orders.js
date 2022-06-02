@@ -9,7 +9,7 @@ const Orders = () => {
   const [orders, setOrders] = useState([]);
   useEffect(() => {
     const email = user.email;
-    fetch(`http://localhost:5000/myorders?email=${email}`)
+    fetch(`https://nameless-reef-38172.herokuapp.com/myorders?email=${email}`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [orders]);
@@ -20,7 +20,7 @@ const Orders = () => {
     const proceed = window.confirm("Are you sure?");
 
     if (proceed) {
-      const url = `http://localhost:5000/myorders/${id}`;
+      const url = `https://nameless-reef-38172.herokuapp.com/myorders/${id}`;
       fetch(url, {
         method: "DELETE",
       })
@@ -33,7 +33,7 @@ const Orders = () => {
   };
 
   const makePaid = (id) => {
-    fetch(`http://localhost:5000/user/order/${id}`, {
+    fetch(`https://nameless-reef-38172.herokuapp.com/user/order/${id}`, {
       method: "PUT",
       headers: {
         "Content-type": "application/json; charset=UTF-8",

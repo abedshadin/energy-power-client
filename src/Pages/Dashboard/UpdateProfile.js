@@ -21,7 +21,7 @@ const UpdateProfile = () => {
       fb: data.fb,
       linkedin: data.linkedin,
     };
-    fetch(`http://localhost:5000/user/${email}`, {
+    fetch(`https://nameless-reef-38172.herokuapp.com/user/${email}`, {
       method: "PUT",
       body: JSON.stringify(proUp),
       headers: {

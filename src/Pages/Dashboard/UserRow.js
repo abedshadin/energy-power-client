@@ -4,7 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 const UserRow = ({ user, refetch }) => {
   const { email, role } = user;
   const makeAdmin = () => {
-    fetch(`http://localhost:5000/user/admin/${email}`, {
+    fetch(`https://nameless-reef-38172.herokuapp.com/user/admin/${email}`, {
       method: "PUT",
       headers: {
         "Content-type": "application/json; charset=UTF-8",

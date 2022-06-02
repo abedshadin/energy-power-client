@@ -4,7 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 const AllOrders = () => {
   const [allOrders, setAllOrders] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/orders`)
+    fetch(`https://nameless-reef-38172.herokuapp.com/orders`)
       .then((res) => res.json())
       .then((data) => setAllOrders(data));
   }, [allOrders]);
@@ -12,7 +12,7 @@ const AllOrders = () => {
     const proceed = window.confirm("Are you sure?");
 
     if (proceed) {
-      const url = `http://localhost:5000/allorders/${id}`;
+      const url = `https://nameless-reef-38172.herokuapp.com/allorders/${id}`;
       fetch(url, {
         method: "DELETE",
       })
@@ -26,7 +26,7 @@ const AllOrders = () => {
   };
 
   const handleShipped = (id) => {
-    fetch(`http://localhost:5000/user/orderShip/${id}`, {
+    fetch(`https://nameless-reef-38172.herokuapp.com/user/orderShip/${id}`, {
       method: "PUT",
       headers: {
         "Content-type": "application/json; charset=UTF-8",

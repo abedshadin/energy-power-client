@@ -9,7 +9,7 @@ const Profile = () => {
   const [profile, setProfile] = useState([]);
   useEffect(() => {
     const email = user.email;
-    fetch(`http://localhost:5000/profile/${email}`)
+    fetch(`https://nameless-reef-38172.herokuapp.com/profile/${email}`)
       .then((res) => res.json())
       .then((data) => setProfile(data));
   }, []);
